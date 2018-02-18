@@ -39,6 +39,7 @@
 				}
 			});
 		})(jQuery, window, document);
+		
 		$("#preloader").addClass("loading");
 		$("#preloader #loader").onCSSTransitionEnd(function() {
 			$("#preloader").addClass("ended");
@@ -49,22 +50,27 @@
 			$(".simplefilter li").removeClass("active");
 			$(this).addClass("active");
 		});
-		var options = {
-			animationDuration: 0.6,
-			filter: "all",
-			callbacks: {
-				onFilteringStart: function() {},
-				onFilteringEnd: function() {}
-			},
-			delay: 0,
-			delayMode: "alternate",
-			easing: "ease-out",
-			layout: "sameSize",
-			selector: ".filtr-container",
-			setupControls: true
+
+		if ( $(".filtr-container").length > 0 )
+		{
+			var options = {
+				animationDuration: 0.6,
+				filter: "all",
+				callbacks: {
+					onFilteringStart: function() {},
+					onFilteringEnd: function() {}
+				},
+				delay: 0,
+				delayMode: "alternate",
+				easing: "ease-out",
+				layout: "sameSize",
+				selector: ".filtr-container",
+				setupControls: true
+			}
+			var filterizd = $(".filtr-container").filterizr(options);
+			filterizd.filterizr("setOptions", options);
 		}
-		var filterizd = $(".filtr-container").filterizr(options);
-		filterizd.filterizr("setOptions", options);
+			
 
 	});	
 			
